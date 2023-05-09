@@ -23,7 +23,6 @@ Users can add tasks to the app and the app allow users to mark tasks as complete
 * Styled With `Material UI`
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
