@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "Buy Grocery",
+      "completed": true
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "title": "Write Letter",
+      "completed": false
+    },
+    {
+      "userId": 1,
+      "id": 3,
+      "title": "Plan Holiday",
+      "completed": false
+    }
+  ]
+}
