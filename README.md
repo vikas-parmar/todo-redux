@@ -1,26 +1,26 @@
-# [ToDo App- Redux :ledger:](https://github.com/vikas-parmar/todo-redux/)
+<div align="center">
+  
+# [📝 React Redux Todo App with Material UI 🚀](https://github.com/vikas-parmar/todo-redux/)
 
-## Description
-:pushpin: ToDo List App, This React based application allows user to create, manage, and organize their tasks in a user-friendly interface.\
-This app is built using create react app toolchain.<br />
-Users can add tasks to the app and the app allow users to mark tasks as completed, edit or delete them, and move them between categories.
+Welcome to my meticulously crafted Todo application built using React, Redux Toolkit, and styled with Material UI. \
+This powerful combination of technologies offers a seamless and intuitive user experience, allowing you to efficiently manage \
+your tasks with style.
 
-## Links
-- GitHub:  [ToDo App](https://github.com/vikas-parmar/todo-redux/)
-- Visit: [ToDo App](https://todo-redux-vikas-parmar.vercel.app/)
-## Technologies Used
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
-![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
-![CSS BADGE](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
 ![GIT BADGE](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 ![GITHUB BADGE](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-* Library         `React`
-* Package Manager `NPM`
-* Used ToolChain  `Create React App`
-* Styled With `Material UI`
+ </div>
+ 
+## Key Features:
+:heavy_check_mark: User-friendly interface for creating, editing, and deleting todos \
+:heavy_check_mark: Real-time updates with Redux Toolkit's efficient state management \
+:heavy_check_mark: Material UI's sleek and responsive design for a polished look \
+:heavy_check_mark: Seamless integration of Redux with React components for enhanced functionality
 
 ## Available Scripts
 In the project directory, you can run:
@@ -48,8 +48,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Optimizations
-Want to integrate with API.
+## Links
+> GitHub:  [ToDo App](https://github.com/vikas-parmar/todo-redux/) \
+> Visit: [ToDo App](https://todo-redux-vikas-parmar.vercel.app/)
 
 ## What I learn from this project
 Building A ToDo list App project based on React is enhanced my skills as a web developer and  I gain practical experience in building real-world applications.\
