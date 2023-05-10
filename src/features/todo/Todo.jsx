@@ -20,7 +20,7 @@ import {
   cardStyle,
   todoContainer,
   typographyStyle,
-} from "./TodoStyle";
+} from "./todoStyle";
 import { useDispatch, useSelector } from "react-redux";
 import {
   add,
@@ -71,11 +71,12 @@ const TodoItem = (props) => {
 
 const Todo = () => {
   const dispatch = useDispatch();
-
+  
   const [input, setInput] = React.useState("");
   const [editTodoItem, setEditTodoItem] = React.useState(null);
-
+  
   const todos = useSelector(selectTodo);
+  
 
   const handleTodoInput = (e) => {
     setInput(e.target.value);

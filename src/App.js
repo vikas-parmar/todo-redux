@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "@mui/material/Container";
-import { containerStyle } from "./features/todo/TodoStyle";
+import { containerStyle } from "./features/todo/todoStyle";
 import Todo from "./features/todo/Todo";
 
 const App = () => {
