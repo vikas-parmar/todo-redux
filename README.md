@@ -52,10 +52,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 > GitHub:  [ToDo App](https://github.com/vikas-parmar/todo-redux/) \
 > Visit: [ToDo App](https://todo-redux-vikas-parmar.vercel.app/)
 
-## What I learn from this project
-Building A ToDo list App project based on React is enhanced my skills as a web developer and  I gain practical experience in building real-world applications.\
-This project is been helpful for me to learn React concepts, web development skills, project management, and problem-solving.
-
 ## Authors
 - GitHub: [Vikas Parmar](https://github.com/vikas-parmar)
 - LinkedIn: [Vikas Parmar](https://www.linkedin.com/in/vikas-parmar/)
