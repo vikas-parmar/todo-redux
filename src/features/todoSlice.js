@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const todoSlice = createSlice({
   name: "todos",
-  initialState: [
-    { id: "todo-0", content: "Buy Grocery", completed: true },
-    { id: "todo-1", content: "Write Letter", completed: false },
-    { id: "todo-2", content: "Plan Holiday", completed: false },
-  ],
+  initialState: [],
   reducers: {
+    addToSlice: (state, action) => {
+      const todos = [...action.payload];
+      return todos;
+    },
     add: (state, action) => {
       state.push(action.payload);
     },
@@ -24,15 +24,16 @@ const todoSlice = createSlice({
       return [];
     },
     update: (state, action) => {
-      const { id, content } = action.payload;
+      const { id, todo } = action.payload;
       const todoIndex = state.findIndex((todo) => todo.id === id);
       if (todoIndex !== -1) {
-        state[todoIndex].content = content;
+        state[todoIndex].todo = todo;
       }
     },
   },
 });
 
 export const selectTodo = (state) => state.todos;
-export const { add, remove, update, toggle, deleteAll } = todoSlice.actions;
+export const { addToSlice, add, remove, update, toggle, deleteAll } =
+  todoSlice.actions;
 export default todoSlice.reducer;

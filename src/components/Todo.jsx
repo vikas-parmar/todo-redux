@@ -5,11 +5,10 @@ import {
   Card,
   CardContent,
   IconButton,
-  Stack,
   Typography,
-  Container,
   FormControlLabel,
   Checkbox,
+  Grid,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -20,27 +19,35 @@ import {
   cardStyle,
   todoContainer,
   typographyStyle,
-} from "./todoStyle";
+} from "../features/todoStyle";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addToSlice,
   add,
   remove,
   selectTodo,
   toggle,
   update,
   deleteAll,
-} from "./todoSlice";
+} from "../features/todoSlice";
+import {
+  useAddTodosMutation,
+  useDeleteTodosMutation,
+  useGetTodosQuery,
+  useUpdateTodosMutation,
+} from "../features/todoApi";
 
 const TodoItem = (props) => {
-  const { todo, handleDelete, toggleTodo, editTodo } = props;
-  const { id, content, completed } = todo;
+  const { data, handleDelete, toggleTodo, editTodo } = props;
+  const { id, todo, completed } = data;
+
   return (
     <Card variant="outlined" sx={cardStyle}>
       <CardContent sx={cardContentStyle}>
         <FormControlLabel
           label={
-            <Typography variant="h5" component="div" color="text.secondary">
-              {content}
+            <Typography variant="h6" color="text.secondary">
+              {todo}
             </Typography>
           }
           sx={{ flex: 1 }}
@@ -52,7 +59,7 @@ const TodoItem = (props) => {
           aria-label="edit"
           size="large"
           color="primary"
-          onClick={() => editTodo({ id, content })}
+          onClick={() => editTodo({ id, todo })}
         >
           <BorderColorIcon fontSize="inherit" />
         </IconButton>
@@ -71,13 +78,22 @@ const TodoItem = (props) => {
 
 const Todo = () => {
   const dispatch = useDispatch();
-  
+
+  // Adding todos to slice
+  const { data } = useGetTodosQuery();
+  React.useEffect(() => {
+    if (data) {
+      dispatch(addToSlice(data.todos));
+    }
+  }, [data, dispatch]);
+  const [addTodos] = useAddTodosMutation();
+  const [updateTodos] = useUpdateTodosMutation();
+  const [deleteTodos] = useDeleteTodosMutation();
+
   const [input, setInput] = React.useState("");
   const [editTodoItem, setEditTodoItem] = React.useState(null);
-  
-  const todos = useSelector(selectTodo);
-  
 
+  const todos = useSelector(selectTodo);
   const handleTodoInput = (e) => {
     setInput(e.target.value);
   };
@@ -85,22 +101,25 @@ const Todo = () => {
   const addTodoButton = () => {
     if (input.length > 0) {
       const newTodo = {
-        id: "todo-" + todos.length,
-        content: input,
+        id: todos.length + 1,
+        todo: input,
         completed: false,
+        userId: 4,
       };
       dispatch(add(newTodo));
+      addTodos(newTodo);
       setInput("");
     }
   };
 
-  const updateTodoInput = () => {
+  const updateTodoInput = async () => {
     if (editTodoItem && input.length > 0) {
       const updatedTodo = {
         ...editTodoItem,
-        content: input,
+        todo: input,
       };
       dispatch(update(updatedTodo));
+      await updateTodos(updatedTodo);
       setInput("");
       setEditTodoItem(null);
     }
@@ -116,9 +135,9 @@ const Todo = () => {
     }
   };
 
-  const editTodo = (todo) => {
-    setEditTodoItem(todo);
-    setInput(todo.content);
+  const editTodo = (todoData) => {
+    setEditTodoItem(todoData);
+    setInput(todoData.todo);
   };
 
   const toggleTodo = (id) => {
@@ -127,6 +146,7 @@ const Todo = () => {
 
   const deleteTodoButton = (id) => {
     dispatch(remove(id));
+    deleteTodos(id);
   };
 
   const deleteAllButton = () => {
@@ -134,12 +154,12 @@ const Todo = () => {
   };
 
   return (
-    <Container component={Paper} sx={todoContainer} maxWidth="md" elevation={3}>
+    <Paper sx={todoContainer} elevation={3}>
       <Typography
         variant="h3"
         gutterBottom
         align="center"
-        fontWeight={"bold"}
+        fontWeight="bold"
         sx={typographyStyle}
       >
         Todo List
@@ -163,19 +183,27 @@ const Todo = () => {
           {editTodoItem ? "Update" : "Add"}
         </Button>
       </Box>
-      <Stack spacing={2} marginTop={3}>
+
+      <Grid
+        container
+        spacing={2}
+        marginTop={3}
+        sx={{ maxHeight: 300, overflowY: "auto" }}
+      >
         {todos.map((todo, index) => {
           return (
-            <TodoItem
-              key={index}
-              todo={todo}
-              editTodo={editTodo}
-              handleDelete={deleteTodoButton}
-              toggleTodo={toggleTodo}
-            />
+            <Grid item key={index} xs={12} p={1}>
+              <TodoItem
+                data={todo}
+                editTodo={editTodo}
+                handleDelete={deleteTodoButton}
+                toggleTodo={toggleTodo}
+              />
+            </Grid>
           );
         })}
-      </Stack>
+      </Grid>
+
       {todos.length > 0 && (
         <Button
           variant="contained"
@@ -187,7 +215,7 @@ const Todo = () => {
           Delete All
         </Button>
       )}
-    </Container>
+    </Paper>
   );
 };
 

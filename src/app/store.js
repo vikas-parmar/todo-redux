@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todosReducer from "../features/todo/todoSlice";
-import { todosApi } from "../features/todo/todoApi";
-import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import todosReducer from "../features/todoSlice";
+import { todosApi } from "../features/todoApi";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 export const store = configureStore({
   reducer: {
@@ -9,7 +9,7 @@ export const store = configureStore({
     todos: todosReducer,
   },
   middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware().concat(todosApi.middleware),
+    getDefaultMiddleware().concat(todosApi.middleware),
 });
 
 setupListeners(store.dispatch);
