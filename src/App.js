@@ -1,11 +1,10 @@
 import React from "react";
 import Container from "@mui/material/Container";
-import { containerStyle } from "./features/todo/todoStyle";
-import Todo from "./features/todo/Todo";
+import Todo from "./components/Todo";
 
 const App = () => {
   return (
-    <Container maxWidth={false} sx={containerStyle}>
+    <Container maxWidth="md">
       <Todo />
     </Container>
   );
